@@ -42,7 +42,6 @@
             padding: 40px; 
             box-shadow: 0 4px 20px rgba(0, 77, 64, 0.08); 
             border: 1px solid #d1e4e2;
-            /* 重要：設定為 relative 才能讓內部的資料來源標籤定位在右下角 */
             position: relative; 
             margin-bottom: 30px;
         }
@@ -78,29 +77,30 @@
             border: none;
         }
 
-        /* 【修改位置】右下角資料來源標籤樣式 */
+        /* 【修改位置】右下角資料來源標籤 (簡約純文字版) */
         .source-tag-bottom {
             position: absolute;
-            /* 距離卡片底部 15px，距離右側 40px */
-            bottom: 0px;
+            /* 調整距離底部高度，避免擋字 */
+            bottom: 5px;
             right: 40px;
-            background-color: #E0FAF8; 
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-size: 0.9em;
+            /* 移除背景與框線 */
+            background-color: transparent; 
+            border: none;
+            padding: 0;
+            /* 文字顏色改為較低調的深灰色 */
+            font-size: 0.85em;
+            color: #7f8c8d;
             z-index: 10;
-            border: 1px solid #26a69a;
         }
 
         .source-tag-bottom a {
-            color: #000000; 
-            text-decoration: none;
+            color: #2c3e50; 
+            text-decoration: underline; /* 加入下劃線方便辨識連結 */
             font-weight: bold;
         }
 
         .source-tag-bottom a:hover {
             color: #d81b60;
-            text-decoration: underline;
         }
 
         /* 議題清單樣式 */
@@ -132,19 +132,19 @@
             border-color: #95a5a6; 
         }
 
-        /* --- 【分類顏色區】 --- */
+        /* --- 【分類顏色區】 (已保留您調整後的顏色) --- */
         .cat-landslide { background-color: #fce8cc; border-color: #BC9F77; } /* 坡災：淺土色 */
-        .cat-flood { background-color: #e0f2f7; border-color: #c5e1eb; }     /* 水災：淺藍色 */
+        .cat-flood { background-color: #e0f2f7; border-color: #1E88A8; }     /* 水災：淺藍色 */
         .cat-drought { background-color: #fcfbd7; border-color: #FBE251; }   /* 旱災：淺黃色 */
-        .cat-temp { background-color: #fff0f0; border-color: #fcdbdb; }      /* 溫類：淺粉色 */
+        .cat-temp { background-color: #fff0f0; border-color: #E16B8C; }      /* 溫類：淺粉色 */
 
         .fa-chevron-down { margin-left: 8px; font-size: 0.8em; color: #26a69a; }
 
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
-            .card { padding: 20px; padding-bottom: 60px; /* 手機版多留一點空間給右下角標籤 */ }
+            .card { padding: 20px; padding-bottom: 60px; }
             .issue-list { grid-template-columns: 1fr; }
-            .source-tag-bottom { right: 20px; bottom: 10px; font-size: 0.8em; }
+            .source-tag-bottom { right: 20px; bottom: 8px; font-size: 0.8em; }
         }
     </style>
 </head>
@@ -161,7 +161,7 @@
             </div>
 
             <div class="source-tag-bottom">
-                資料來源 <i class="fas fa-external-link-alt"></i>：
+                資料來源 <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i>：
                 <a href="https://drive.google.com/file/d/1lVH8JmPICrafENUt6V51Ku9crurEXFPw/view?usp=drive_link" target="_blank">
                     《新竹縣氣候變遷調適執行方案（核定本）》
                 </a>
