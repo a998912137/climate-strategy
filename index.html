@@ -56,12 +56,34 @@
             display: block;
         }
 
-        /* 項目2：清單樣式 */
+        /* --- 修正版簡報容器：確保比例不跑掉 --- */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            /* 56.25% 是 16:9 的標準比例，如果是 4:3 請改為 75% */
+            padding-bottom: 56.25%; 
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- 項目2：調適議題清單樣式 --- */
         .issue-list {
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 15px;
         }
 
@@ -95,26 +117,10 @@
             color: #26a69a;
         }
 
-        /* 簡報嵌入容器設定 */
-        .iframe-container {
-            width: 100%;
-            height: 700px; 
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
         /* 手機版排版微調 */
         @media (max-width: 768px) {
-            .iframe-container { height: 400px; }
             h1 { font-size: 1.8rem; }
-            .card { padding: 25px; }
+            .card { padding: 20px; }
             .issue-list { grid-template-columns: 1fr; }
         }
     </style>
@@ -128,7 +134,12 @@
             <span class="link-title">調適議題與與地方氣候變遷政策/災防共同目標、業務之關聯</span>
             
             <div class="iframe-container">
-                <iframe src="https://docs.google.com/presentation/d/1OZ4E5vnEyeJ8DKj5FCz0IQO6jtbdyRzI/embed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                <iframe 
+                    src="https://docs.google.com/presentation/d/1OZ4E5vnEyeJ8DKj5FCz0IQO6jtbdyRzI/embed?start=false&loop=false&delayms=3000&rm=minimal" 
+                    allowfullscreen="true" 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true">
+                </iframe>
             </div>
         </div>
 
