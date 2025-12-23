@@ -10,6 +10,7 @@
     <style>
         body { 
             font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", sans-serif; 
+            /* 【中文標註】網頁最底層的背景顏色 */
             background-color: #f0f7f6; 
             padding: 40px 20px; 
             line-height: 1.8; 
@@ -17,38 +18,64 @@
             margin: 0;
         }
 
-        .container { max-width: 1200px; margin: auto; }
+        .container { 
+            /* 【中文標註】網頁主體最大寬度 */
+            max-width: 1200px; 
+            margin: auto; 
+        }
 
-        h1 { color: #004d40; text-align: center; font-size: 2.4rem; margin-bottom: 20px; font-weight: bold; }
+        h1 { 
+            /* 【中文標註】大標題文字顏色 */
+            color: #004d40; 
+            text-align: center; 
+            /* 【中文標註】大標題字體大小 */
+            font-size: 2.4rem; 
+            margin-bottom: 20px; 
+            font-weight: bold;
+        }
 
-        .header-underline { width: 100%; border-bottom: 3px solid #26a69a; margin-bottom: 40px; }
+        .header-underline {
+            width: 100%;
+            /* 【中文標註】大標題下方橫線：厚度(3px)、顏色(#26a69a) */
+            border-bottom: 3px solid #26a69a; 
+            margin-bottom: 40px;
+        }
 
         .card { 
+            /* 【中文標註】白卡片背景色 */
             background: #ffffff; 
+            /* 【中文標註】卡片圓角半徑 */
             border-radius: 8px; 
+            /* 【中文標註】卡片內邊距 (文字距離邊框的距離) */
             padding: 40px; 
+            /* 【中文標註】卡片陰影效果 */
             box-shadow: 0 4px 20px rgba(0, 77, 64, 0.08); 
+            /* 【中文標註】卡片外框線：粗細(1px)、顏色(#d1e4e2) */
             border: 1px solid #d1e4e2;
             position: relative; 
             margin-bottom: 30px;
         }
 
         .link-title { 
+            /* 【中文標註】小標題文字顏色 */
             color: #006064; 
             font-weight: 800; 
             font-size: 1.6em; 
+            /* 【中文標註】標題左側色塊線：粗細(8px)、顏色(#26a69a) */
             border-left: 8px solid #26a69a;
             padding-left: 15px;
             margin-bottom: 25px;
             display: block;
         }
 
-        /* 簡報容器：顯示控制列並維持比例 */
+        /* 簡報容器設定 */
         .iframe-container {
             position: relative;
             width: 100%;
             height: 0;
+            /* 【中文標註】簡報比例 (16:9 + 30px控制列高度) */
             padding-bottom: calc(56.25% + 30px); 
+            /* 【中文標註】簡報外框線：粗細(1px)、顏色(#e0e0e0) */
             border: 1px solid #e0e0e0;
             border-radius: 4px;
             overflow: hidden;
@@ -64,11 +91,12 @@
             border: none;
         }
 
-        /* --- 議題清單樣式 --- */
+        /* 議題清單樣式 */
         .issue-list { 
             list-style: none; 
             padding: 0; 
             display: grid; 
+            /* 【中文標註】清單排列寬度，320px代表手機版會自動縮為一欄 */
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
             gap: 15px; 
         }
@@ -76,37 +104,46 @@
         .issue-item { 
             border-radius: 6px; 
             transition: 0.3s; 
+            /* 【中文標註】選項文字框預設邊框粗細 (1px) */
             border: 1px solid transparent; 
         }
 
         .issue-item a { 
             display: block; 
             padding: 12px 18px; 
-            /* 【修改位置】加深文字顏色，從原本的 34495e 改為更深的 1a252f */
+            /* 【中文標註】清單選項文字顏色 */
             color: #1a252f; 
             text-decoration: none; 
-            font-weight: 600; /* 稍微加粗提高辨識度 */
+            /* 【中文標註】文字粗細 (600代表半粗體) */
+            font-weight: 600; 
         }
 
-        /* 懸停效果 */
+        /* 懸停效果 (滑鼠指上去時) */
         .issue-item:hover { 
             transform: translateY(-2px); 
-            filter: brightness(0.92); /* 懸停時顏色加深多一點點 */
+            filter: brightness(0.92); 
+            /* 【中文標註】懸停時的邊框顏色 */
             border-color: #95a5a6; 
         }
 
         .issue-item:hover a {
-            color: #000000; /* 懸停時文字變純黑 */
+            color: #000000; 
         }
 
-        /* --- 分類顏色樣式 (維持原本色系但稍微強化邊框) --- */
+        /* --- 【分類顏色區】修改背景與邊框顏色請改此處 --- */
+        
+        /* 坡災：淺土色 */
         .cat-landslide { background-color: #f5f5dc; border-color: #e6e6ca; }
+        /* 水災：淺藍色 */
         .cat-flood { background-color: #e0f2f7; border-color: #c5e1eb; }
+        /* 旱災：淺黃色 */
         .cat-drought { background-color: #fffde7; border-color: #f9f4c3; }
+        /* 溫類：淺粉色 */
         .cat-temp { background-color: #fff0f0; border-color: #fcdbdb; }
 
         .fa-chevron-down { margin-left: 8px; font-size: 0.8em; color: #26a69a; }
 
+        /* 手機版設定 */
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
             .card { padding: 20px; }
