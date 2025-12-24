@@ -15,6 +15,8 @@
             line-height: 1.8; 
             color: #2c3e50; 
             margin: 0;
+            /* 確保整體頁面滑動流暢度 */
+            -webkit-overflow-scrolling: touch;
         }
 
         .container { 
@@ -56,7 +58,6 @@
             display: block;
         }
 
-        /* 標題下方的說明文字樣式 */
         .instruction-text {
             color: #7f8c8d;
             font-size: 1.05em;
@@ -65,13 +66,12 @@
             padding-left: 23px;
         }
 
-        /* 【新增】強調文字顏色：與資料來源連結顏色一致 */
+        /* 強調文字顏色：與資料來源一致 */
         .highlight-text {
             color: #2c3e50;
             font-weight: bold;
         }
 
-        /* 簡報容器設定 */
         .iframe-container {
             position: relative;
             width: 100%;
@@ -92,7 +92,6 @@
             border: none;
         }
 
-        /* 右下角資料來源 (簡約文字版) */
         .source-tag-bottom {
             position: absolute;
             bottom: 8px;
@@ -109,7 +108,7 @@
             font-weight: bold;
         }
 
-        /* 立體膠囊按鈕樣式 */
+        /* 膠囊按鈕基礎樣式 */
         .issue-list { 
             list-style: none; 
             padding: 0; 
@@ -125,6 +124,8 @@
             background-color: #ffffff;
             position: relative;
             top: 0;
+            /* 行動端流暢優化 */
+            will-change: transform;
         }
 
         .issue-item a { 
@@ -141,43 +142,44 @@
             filter: brightness(0.98);
         }
 
-        /* --- 【色彩細項調整區】 --- */
-
-        /* 坡災 EEC979 */
-        .cat-landslide { 
-            background-color: #fff9f0; 
-            box-shadow: 0 5px 0px #EEC979; 
-        }
+        /* --- 色彩分類區 (保持您提供的精確色碼) --- */
+        .cat-landslide { background-color: #fff9f0; box-shadow: 0 5px 0px #EEC979; }
         .cat-landslide:hover { box-shadow: 0 2px 0px #EEC979; }
 
-        /* 水災 66BDCC */
-        .cat-flood { 
-            background-color: #f2fdff; 
-            box-shadow: 0 5px 0px #66BDCC; 
-        }
+        .cat-flood { background-color: #f2fdff; box-shadow: 0 5px 0px #66BDCC; }
         .cat-flood:hover { box-shadow: 0 2px 0px #66BDCC; }
 
-        /* 旱災 B4B881 */
-        .cat-drought { 
-            background-color: #fdfdf2; 
-            box-shadow: 0 5px 0px #B4B881; 
-        }
+        .cat-drought { background-color: #fdfdf2; box-shadow: 0 5px 0px #B4B881; }
         .cat-drought:hover { box-shadow: 0 2px 0px #B4B881; }
 
-        /* 溫類 D96738 */
-        .cat-temp { 
-            background-color: #fff8f5; 
-            box-shadow: 0 5px 0px #D96738; 
-        }
+        .cat-temp { background-color: #fff8f5; box-shadow: 0 5px 0px #D96738; }
         .cat-temp:hover { box-shadow: 0 2px 0px #D96738; }
 
         .fa-chevron-down { margin-left: 8px; font-size: 0.8em; color: #26a69a; }
 
+        /* --- 【行動裝置優化特區】 --- */
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
-            .card { padding: 20px; padding-bottom: 70px; }
-            .issue-list { grid-template-columns: 1fr; }
-            .source-tag-bottom { right: 20px; bottom: 8px; font-size: 0.8em; }
+            .card { 
+                padding: 20px 15px 45px 15px; /* 增加底部間距，讓手指滑動有抓手 */
+                margin-bottom: 20px;
+            }
+            .issue-list { grid-template-columns: 1fr; gap: 18px; }
+            
+            /* 行動端簡化陰影計算，減少 GPU 負擔 */
+            .issue-item { 
+                box-shadow: 0 4px 0px rgba(0,0,0,0.15) !important; 
+            }
+            .cat-landslide:hover, .cat-flood:hover, .cat-drought:hover, .cat-temp:hover {
+                box-shadow: 0 2px 0px rgba(0,0,0,0.15) !important;
+            }
+
+            .source-tag-bottom { 
+                right: 20px; 
+                bottom: 10px; 
+                font-size: 0.75em; 
+            }
+            .instruction-text { padding-left: 15px; font-size: 0.95em; }
         }
     </style>
 </head>
@@ -189,7 +191,7 @@
         <div class="card">
             <span class="link-title">調適議題與與地方氣候變遷政策/災防共同目標、業務之關聯</span>
             <div class="iframe-container">
-                <iframe src="https://docs.google.com/presentation/d/1OZ4E5vnEyeJ8DKj5FCz0IQO6jtbdyRzI/embed?start=false&loop=false&delayms=3000" allowfullscreen="true"></iframe>
+                <iframe src="https://docs.google.com/presentation/d/1OZ4E5vnEyeJ8DKj5FCz0IQO6jtbdyRzI/embed?start=false&loop=false&delayms=3000" loading="lazy" allowfullscreen="true"></iframe>
             </div>
             <div class="source-tag-bottom">
                 資料來源 <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i>：
@@ -201,7 +203,7 @@
             <span class="link-title">查看更多調適議題與策略... <i class="fas fa-chevron-down"></i></span>
             
             <span class="instruction-text">
-                前往本站<span class="highlight-text">韌性防災專區</span>或點選以下<span class="highlight-text">專案地圖</span>：
+                前往本站<span class="highlight-text">韌性防災專區</span>或點選以下專案地圖：
             </span>
 
             <ul class="issue-list">
