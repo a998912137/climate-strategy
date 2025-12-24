@@ -56,12 +56,19 @@
             display: block;
         }
 
+        /* 標題下方的說明文字樣式 */
         .instruction-text {
             color: #7f8c8d;
             font-size: 1.05em;
             margin-bottom: 25px;
             display: block;
             padding-left: 23px;
+        }
+
+        /* 【新增】強調文字顏色：與資料來源連結顏色一致 */
+        .highlight-text {
+            color: #2c3e50;
+            font-weight: bold;
         }
 
         /* 簡報容器設定 */
@@ -138,8 +145,8 @@
 
         /* 坡災 EEC979 */
         .cat-landslide { 
-            background-color: #fff9f0; /* 極淺背景色 */
-            box-shadow: 0 5px 0px #EEC979; /* 立體底條 */
+            background-color: #fff9f0; 
+            box-shadow: 0 5px 0px #EEC979; 
         }
         .cat-landslide:hover { box-shadow: 0 2px 0px #EEC979; }
 
@@ -192,7 +199,10 @@
 
         <div class="card">
             <span class="link-title">查看更多調適議題與策略... <i class="fas fa-chevron-down"></i></span>
-            <span class="instruction-text">前往本站韌性防災專區或點選以下連結：</span>
+            
+            <span class="instruction-text">
+                前往本站<span class="highlight-text">韌性防災專區</span>或點選以下專案地圖：
+            </span>
 
             <ul class="issue-list">
                 <li class="issue-item cat-landslide"><a href="https://eocdss.ncdr.nat.gov.tw/web/DisasterResilience/ProjectDisplay#1f187859-08de-40d8-b5d9-1df24ed51231" target="_blank">山坡地聚落因應極端坡災</a></li>
