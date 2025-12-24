@@ -38,7 +38,7 @@
 
         .card { 
             background: #ffffff; 
-            border-radius: 8px; 
+            border-radius: 12px; 
             padding: 40px; 
             box-shadow: 0 4px 20px rgba(0, 77, 64, 0.08); 
             border: 1px solid #d1e4e2;
@@ -52,8 +52,16 @@
             font-size: 1.6em; 
             border-left: 8px solid #26a69a;
             padding-left: 15px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .instruction-text {
+            color: #7f8c8d;
+            font-size: 1.05em;
             margin-bottom: 25px;
             display: block;
+            padding-left: 23px;
         }
 
         /* 簡報容器設定 */
@@ -63,7 +71,7 @@
             height: 0;
             padding-bottom: calc(56.25% + 30px); 
             border: 1px solid #e0e0e0;
-            border-radius: 4px;
+            border-radius: 8px;
             overflow: hidden;
             background: #000;
         }
@@ -77,17 +85,12 @@
             border: none;
         }
 
-        /* 【修改位置】右下角資料來源標籤 (簡約純文字版) */
+        /* 右下角資料來源 (簡約文字版) */
         .source-tag-bottom {
             position: absolute;
-            /* 調整距離底部高度，避免擋字 */
-            bottom: 5px;
+            bottom: 8px;
             right: 40px;
-            /* 移除背景與框線 */
             background-color: transparent; 
-            border: none;
-            padding: 0;
-            /* 文字顏色改為較低調的深灰色 */
             font-size: 0.85em;
             color: #7f8c8d;
             z-index: 10;
@@ -95,54 +98,77 @@
 
         .source-tag-bottom a {
             color: #2c3e50; 
-            text-decoration: underline; /* 加入下劃線方便辨識連結 */
+            text-decoration: underline;
             font-weight: bold;
         }
 
-        .source-tag-bottom a:hover {
-            color: #d81b60;
-        }
-
-        /* 議題清單樣式 */
+        /* 立體膠囊按鈕樣式 */
         .issue-list { 
             list-style: none; 
             padding: 0; 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-            gap: 15px; 
+            gap: 25px; 
         }
 
         .issue-item { 
-            border-radius: 6px; 
-            transition: 0.3s; 
-            border: 1px solid transparent; 
+            border-radius: 50px; 
+            transition: all 0.2s ease; 
+            border: 2px solid #2c3e50; 
+            background-color: #ffffff;
+            position: relative;
+            top: 0;
         }
 
         .issue-item a { 
             display: block; 
-            padding: 12px 18px; 
+            padding: 14px 25px; 
             color: #1a252f; 
             text-decoration: none; 
-            font-weight: 600; 
+            font-weight: 800; 
+            text-align: center;
         }
 
         .issue-item:hover { 
-            transform: translateY(-2px); 
-            filter: brightness(0.92); 
-            border-color: #95a5a6; 
+            top: 3px;
+            filter: brightness(0.98);
         }
 
-        /* --- 【分類顏色區】 (已保留您調整後的顏色) --- */
-        .cat-landslide { background-color: #fce8cc; border-color: #BC9F77; } /* 坡災：淺土色 */
-        .cat-flood { background-color: #e0f2f7; border-color: #1E88A8; }     /* 水災：淺藍色 */
-        .cat-drought { background-color: #fcfbd7; border-color: #FBE251; }   /* 旱災：淺黃色 */
-        .cat-temp { background-color: #fff0f0; border-color: #E16B8C; }      /* 溫類：淺粉色 */
+        /* --- 【色彩細項調整區】 --- */
+
+        /* 坡災 EEC979 */
+        .cat-landslide { 
+            background-color: #fff9f0; /* 極淺背景色 */
+            box-shadow: 0 5px 0px #EEC979; /* 立體底條 */
+        }
+        .cat-landslide:hover { box-shadow: 0 2px 0px #EEC979; }
+
+        /* 水災 66BDCC */
+        .cat-flood { 
+            background-color: #f2fdff; 
+            box-shadow: 0 5px 0px #66BDCC; 
+        }
+        .cat-flood:hover { box-shadow: 0 2px 0px #66BDCC; }
+
+        /* 旱災 B4B881 */
+        .cat-drought { 
+            background-color: #fdfdf2; 
+            box-shadow: 0 5px 0px #B4B881; 
+        }
+        .cat-drought:hover { box-shadow: 0 2px 0px #B4B881; }
+
+        /* 溫類 D96738 */
+        .cat-temp { 
+            background-color: #fff8f5; 
+            box-shadow: 0 5px 0px #D96738; 
+        }
+        .cat-temp:hover { box-shadow: 0 2px 0px #D96738; }
 
         .fa-chevron-down { margin-left: 8px; font-size: 0.8em; color: #26a69a; }
 
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
-            .card { padding: 20px; padding-bottom: 60px; }
+            .card { padding: 20px; padding-bottom: 70px; }
             .issue-list { grid-template-columns: 1fr; }
             .source-tag-bottom { right: 20px; bottom: 8px; font-size: 0.8em; }
         }
@@ -155,31 +181,32 @@
 
         <div class="card">
             <span class="link-title">調適議題與與地方氣候變遷政策/災防共同目標、業務之關聯</span>
-            
             <div class="iframe-container">
                 <iframe src="https://docs.google.com/presentation/d/1OZ4E5vnEyeJ8DKj5FCz0IQO6jtbdyRzI/embed?start=false&loop=false&delayms=3000" allowfullscreen="true"></iframe>
             </div>
-
             <div class="source-tag-bottom">
-                地方政策資料來源 <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i>：
-                <a href="https://drive.google.com/file/d/1lVH8JmPICrafENUt6V51Ku9crurEXFPw/view?usp=drive_link" target="_blank">
-                    《新竹縣氣候變遷調適執行方案（核定本）》
-                </a>
+                資料來源 <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i>：
+                <a href="https://drive.google.com/file/d/1lVH8JmPICrafENUt6V51Ku9crurEXFPw/view?usp=drive_link" target="_blank">《新竹縣氣候變遷調適執行方案（核定本）》</a>
             </div>
         </div>
 
         <div class="card">
             <span class="link-title">查看更多調適議題與策略... <i class="fas fa-chevron-down"></i></span>
+            <span class="instruction-text">前往本站韌性防災專區或點選以下連結：</span>
+
             <ul class="issue-list">
                 <li class="issue-item cat-landslide"><a href="https://eocdss.ncdr.nat.gov.tw/web/DisasterResilience/ProjectDisplay#1f187859-08de-40d8-b5d9-1df24ed51231" target="_blank">山坡地聚落因應極端坡災</a></li>
                 <li class="issue-item cat-landslide"><a href="https://eocdss.ncdr.nat.gov.tw/web/DisasterResilience/ProjectDisplay#9d97767c-ea43-47ca-938a-0d4f7689c34f" target="_blank">避難收容處所因應極端坡災</a></li>
                 <li class="issue-item cat-landslide"><a href="https://eocdss.ncdr.nat.gov.tw/web/DisasterResilience/ProjectDisplay#f2b87b12-2a2c-416d-a7a3-e81fbec55028" target="_blank">救災應變據點因應極端坡災</a></li>
+                
                 <li class="issue-item cat-flood"><a href="https://eocdss.ncdr.nat.gov.tw/web/DisasterResilience/ProjectDisplay#ae93aa21-2d6c-4f35-be28-15ce0178cc59" target="_blank">各級交通路網因應極端水災</a></li>
                 <li class="issue-item cat-flood"><a href="https://eocdss.ncdr.nat.gov.tw/web/DisasterResilience/ProjectDisplay#ce645d5d-a2e5-49d4-a398-00bbe86eed20" target="_blank">鄰里防災整備因應極端水災</a></li>
                 <li class="issue-item cat-flood"><a href="https://eocdss.ncdr.nat.gov.tw/web/DisasterResilience/ProjectDisplay#c36f1b87-7c7a-4451-a5dc-a6166fac5e11" target="_blank">救災資源單位因應極端水災</a></li>
+                
                 <li class="issue-item cat-drought"><a href="https://eocdss.ncdr.nat.gov.tw/web/DisasterResilience/ProjectDisplay#00f02a31-af55-402a-bedd-3f9d58a7a116" target="_blank">農糧作物因應極端旱災</a></li>
+                
                 <li class="issue-item cat-temp"><a href="https://eocdss.ncdr.nat.gov.tw/web/DisasterResilience/ProjectDisplay#dedbd769-714e-4e3f-8330-d7934652ee16" target="_blank">農糧作物因應極端高低溫</a></li>
-                <li class="issue-item cat-temp"><a href="#" onclick="alert('內容更新中'); return false;">脆弱人口因應極端高溫 (更新中...)</a></li>
+                <li class="issue-item cat-temp"><a href="#" onclick="alert('內容更新中，敬請期待'); return false;">脆弱人口因應極端高溫 (更新中...)</a></li>
             </ul>
         </div>
     </div>
